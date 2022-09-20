@@ -1,0 +1,54 @@
+@startuml
+
+class Marketplace {
+   {field} -asalPengiriman : String
+   {field} -tujuanPengiriman : String
+   {field} -jenisPengiriman : String
+   {field} -beratBarang : Int
+   {field} -hargaBarang : Int
+
+   {method} +cekTarif(beratBarang, asalPengiriman, tujuan pengiriman, ekspedisi): int
+   {method} +kirimRequest(beratBarang, asalPengiriman, tujuan pengiriman, ekspedisi): int
+
+}
+
+Marketplace ..|> Ekspedisi 
+
+interface Ekspedisi{
+{abstract} +returnTarif()
+{abstract} +menerimaRequest()
+
+}
+
+Ekspedisi <|.. SiCepat
+Ekspedisi <|.. JNE
+Ekspedisi <|.. JNT
+
+class SiCepat {
+   {field} +pilihanJasa : String
+   {field} +layananJasa : String
+
+   {method} +returnTarif(beratBarang, asalPengiriman, tujuan pengiriman, ekspedisi): int
+   {method} +menerimaRequest(beratBarang, asalPengiriman, tujuan pengiriman, ekspedisi): int
+
+}
+
+class JNE {
+   {field} +pilihanJasa : String
+   {field} +layananJasa : String
+
+   {method} +returnTarif(beratBarang, asalPengiriman, tujuan pengiriman, ekspedisi): int
+   {method} +menerimaRequest(beratBarang, asalPengiriman, tujuan pengiriman, ekspedisi): int
+
+}
+
+class JNT {
+   {field} +pilihanJasa : String
+   {field} +layananJasa : String
+
+   {method} +returnTarif(beratBarang, asalPengiriman, tujuan pengiriman, ekspedisi): int
+   {method} +menerimaRequest(beratBarang, asalPengiriman, tujuan pengiriman, ekspedisi): int
+
+}
+
+@enduml
