@@ -1,0 +1,47 @@
+# PERANCANGAN UML MENGENAI SISTEM ANTARA ECOMMERCE SERTA EKSPEDISI PENGIRIMAN
+
+#### Code UML :
+@startuml
+pemilihanKurir <-- eCommerce
+jne <|.. pemilihanKurir
+jnt <|.. pemilihanKurir
+siCepat <|.. pemilihanKurir
+
+class eCommerce{
+    -userName : String
+    -address : String
+    -packages : barang
+    __
+    +delivery(barang : pemilihanKurir)
+}
+
+class jne{
+    -name : String
+    __
+    +pengirimianYES(tarifPengiriman, requestPengiriman)
+    +pengirimianREG(tarifPengiriman, requestPengiriman)
+    +pengirimianOKE(tarifPengiriman, requestPengiriman)
+}
+
+class jnt{
+    -name : String
+    __
+    +pengirimianSuper(tarifPengiriman, requestPengiriman)
+    +pengirimianEZ(tarifPengiriman, requestPengiriman)
+    +pengirimianECO(tarifPengiriman, requestPengiriman)
+}
+
+class siCepat{
+    -name : String
+    __
+    +pengirimianBEST(tarifPengiriman, requestPengiriman)
+    +pengirimianGOKIL(tarifPengiriman, requestPengiriman)
+    +pengirimianHALU(tarifPengiriman, requestPengiriman)
+}
+
+interface pemilihanKurir{
+    +tarifPengiriman(price, range, weight): total
+    +requestPengiriman(barang, address)
+}
+
+@enduml
